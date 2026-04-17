@@ -3,7 +3,7 @@
 Este laboratório demonstra a implementação de uma rede segmentada por departamentos utilizando a topologia **Router-on-a-Stick** e boas práticas de segurança Cisco.
 
 ## 📍 Topologia
-![Topologia do Projeto](topologia-rede.png)
+![Topologia do Projeto](topologia-rede.PNG)
 
 ## 🛠️ Tecnologias e Protocolos
 - **VLANs:** Segmentação de tráfego (VLAN 10: Fin, VLAN 20: RH).
