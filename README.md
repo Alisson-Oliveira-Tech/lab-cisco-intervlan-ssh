@@ -14,8 +14,8 @@ Este laboratório demonstra a implementação de uma rede segmentada por departa
 
 ## 🔑 Credenciais de Acesso (Laboratório)
 - **Usuário:** admin
-- **Senha:** [packet2026]
-- **Enable Secret:** [cisco2026]
+- **Senha:** packet2026
+- **Enable Secret:** cisco2026
 
 ## 🚀 Como testar
 1. Baixe o arquivo `.pkt` deste repositório.
