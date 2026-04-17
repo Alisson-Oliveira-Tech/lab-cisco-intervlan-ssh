@@ -1,0 +1,273 @@
+Switch Configuration
+
+Current configuration : 2806 bytes
+!
+version 15.0
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+service password-encryption
+!
+hostname Switch_Principal
+!
+enable secret 5 $1$mERr$VXjJa.vG3OmaDOjYFoNLW1
+!
+!
+!
+ip domain-name sedetech.com
+!
+username admin secret 5 $1$mERr$VD9AjhtsZw6QuNBr2CyCb1
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+interface FastEthernet0/1
+ switchport access vlan 10
+ switchport mode access
+!
+interface FastEthernet0/2
+ switchport access vlan 10
+ switchport mode access
+!
+interface FastEthernet0/3
+ switchport access vlan 20
+ switchport mode access
+!
+interface FastEthernet0/4
+ switchport access vlan 20
+ switchport mode access
+!
+interface FastEthernet0/5
+ description PORTA_DESATIVADA_SEGURANCA
+ shutdown
+!
+interface FastEthernet0/6
+ description PORTA_DESATIVADA_SEGURANCA
+ shutdown
+!
+interface FastEthernet0/7
+ description PORTA_DESATIVADA_SEGURANCA
+ shutdown
+!
+interface FastEthernet0/8
+ description PORTA_DESATIVADA_SEGURANCA
+ shutdown
+!
+interface FastEthernet0/9
+ description PORTA_DESATIVADA_SEGURANCA
+ shutdown
+!
+interface FastEthernet0/10
+ description PORTA_DESATIVADA_SEGURANCA
+ shutdown
+!
+interface FastEthernet0/11
+ description PORTA_DESATIVADA_SEGURANCA
+ shutdown
+!
+interface FastEthernet0/12
+ description PORTA_DESATIVADA_SEGURANCA
+ shutdown
+!
+interface FastEthernet0/13
+ description PORTA_DESATIVADA_SEGURANCA
+ shutdown
+!
+interface FastEthernet0/14
+ description PORTA_DESATIVADA_SEGURANCA
+ shutdown
+!
+interface FastEthernet0/15
+ description PORTA_DESATIVADA_SEGURANCA
+ shutdown
+!
+interface FastEthernet0/16
+ description PORTA_DESATIVADA_SEGURANCA
+ shutdown
+!
+interface FastEthernet0/17
+ description PORTA_DESATIVADA_SEGURANCA
+ shutdown
+!
+interface FastEthernet0/18
+ description PORTA_DESATIVADA_SEGURANCA
+ shutdown
+!
+interface FastEthernet0/19
+ description PORTA_DESATIVADA_SEGURANCA
+ shutdown
+!
+interface FastEthernet0/20
+ description PORTA_DESATIVADA_SEGURANCA
+ shutdown
+!
+interface FastEthernet0/21
+ description PORTA_DESATIVADA_SEGURANCA
+ shutdown
+!
+interface FastEthernet0/22
+ description PORTA_DESATIVADA_SEGURANCA
+ shutdown
+!
+interface FastEthernet0/23
+ description PORTA_DESATIVADA_SEGURANCA
+ shutdown
+!
+interface FastEthernet0/24
+ switchport access vlan 99
+ switchport mode access
+!
+interface GigabitEthernet0/1
+ description LINK_PARA_ROTEADOR
+ switchport mode trunk
+!
+interface GigabitEthernet0/2
+ description PORTA_DESATIVADA_SEGURANCA
+ shutdown
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+interface Vlan99
+ description IP_DE_GERENCIA_DO_SWITCH
+ ip address 192.168.99.2 255.255.255.0
+!
+ip default-gateway 192.168.99.1
+!
+banner motd ^C ACESSO RESTRITO - LOCAL SENDO MONITORADO ^C
+!
+!
+!
+line con 0
+ logging synchronous
+ login local
+!
+line vty 0 4
+ login local
+ transport input ssh
+line vty 5 15
+ login local
+ transport input ssh
+!
+!
+!
+!
+end
+
+-----------------------------------------------------------------------------------------------------
+Router Configuration
+
+
+Current configuration : 1385 bytes
+!
+version 15.1
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+service password-encryption
+!
+hostname Roteador_Sede
+!
+!
+!
+enable secret 5 $1$mERr$VXjJa.vG3OmaDOjYFoNLW1
+!
+!
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+!
+!
+username admin secret 5 $1$mERr$VD9AjhtsZw6QuNBr2CyCb1
+!
+!
+license udi pid CISCO2911/K9 sn FTX1524CYW1-
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+ip domain-name sedetech.com
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ description TRUNK_PARA_SWITCH_PRINCIPAL
+ no ip address
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/0.10
+ description GATEWAY_VLAN_10_FINANCEIRO
+ encapsulation dot1Q 10
+ ip address 192.168.10.1 255.255.255.0
+!
+interface GigabitEthernet0/0.20
+ description GATEWAY_VLAN_20_RH
+ encapsulation dot1Q 20
+ ip address 192.168.20.1 255.255.255.0
+!
+interface GigabitEthernet0/0.99
+ description GATEWAY_VLAN_99_GERENCIA
+ encapsulation dot1Q 99
+ ip address 192.168.99.1 255.255.255.0
+!
+interface GigabitEthernet0/1
+ no ip address
+ duplex auto
+ speed auto
+ shutdown
+!
+interface GigabitEthernet0/2
+ no ip address
+ duplex auto
+ speed auto
+ shutdown
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+ip classless
+!
+ip flow-export version 9
+!
+!
+!
+banner motd ^C ACESSO RESTRITO - SOMENTE PESSOAL AUTORIZADO ^C
+!
+!
+!
+!
+line con 0
+ logging synchronous
+ login local
+!
+line aux 0
+!
+line vty 0 4
+ login local
+ transport input ssh
+!
+!
+!
+end
+
+
